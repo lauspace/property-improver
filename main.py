@@ -7,8 +7,17 @@ if __name__ == '__main__':
     house_number = 1
 
     firebase_blob = firebase_storage.obtain_firebase_blob()
+    # given house selected obtain images urls
     input_images = firebase_storage.obtain_images_path(firebase_blob, house_number)
-    house_data = house_evaluation.evaluate_house(model_url, client_key, input_images)
-    room_to_improve = house_evaluation.obtain_min_room_score(house_data)
+    # Given images urls obtain json data (API use)
+    house_data_json = house_evaluation.evaluate_images_using_API(model_url, client_key, input_images, save=True)
+    # type = exterior, interior, bathroom, kitchen
+    # Given json extract worst type
+    worst_type = house_evaluation.obtain_min_room_score(house_data_json)
+    # Given worst type extract images with this type
+    worst_images = house_evaluation.obtain_worst_type_imgs(worst_type, house_data_json, input_images)
+
+    # Evaluate each worst type image and obtain the three worst
+    top_worst_images = house_evaluation.evaluate_worst_imgs(model_url, client_key, worst_images)
 
 
