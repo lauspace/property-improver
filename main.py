@@ -5,7 +5,7 @@ import house_damage
 if __name__ == '__main__':
     client_key = '79de00b7cd11c23d476c3a14567cb218edaf0c742f8b3946a993afaec1c33ea3'
     model_url = 'https://property.restb.ai/v1/multianalyze'
-    house_number = 3
+    house_number = 1
 
     firebase_blob = firebase_storage.obtain_firebase_blob()
     # given house selected obtain images urls
@@ -24,6 +24,8 @@ if __name__ == '__main__':
     model_url = 'https://api-us.restb.ai/vision/v2/multipredict'
     # Obtain damage state from worst images
     damage_state = house_damage.evaluate_damage(model_url, client_key, top_worst_images)
+
+    print(damage_state)
 
 
 

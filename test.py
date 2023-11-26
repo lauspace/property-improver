@@ -17,9 +17,8 @@ def evaluate_images_using_API_2(images):
     json = response.json()
     return json
 
-images = ['https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_33.jpg?alt=media&token=2c4c8968-76fe-4cee-aec1-2822bb7cb491',
-                  'https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_11.jpg?alt=media&token=d5dc1a73-b70e-4065-8db8-0c09b52ef8a0',
-          'https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_18.jpg?alt=media&token=278d1efd-9e57-4035-8656-8ffbdb28ee4e']
+images = ['https://storage.googleapis.com/property-improver-4.appspot.com/house1/img_1.jpg?Expires=3600&GoogleAccessId=firebase-adminsdk-mtvx2%40property-improver-4.iam.gserviceaccount.com&Signature=XOODJouPWuRjwpJHlslkfmhTsk%2BjlUTi6YxysLu3p6exmdFQk2kh%2BZPLkc9t66qDk3AACtvlbqDYv40L5sHn1j%2FwZl4M7R1iW6fkylNKTIIfRAgfwWZv3boYUMa1gBzUwqlzkkrl5nGphVNSAoXvE06KcfPP42QduDbBVESmX104nKxDHqATB%2BwkjePrYAX7nSdivhvAHb3u6YwUiN6Pqqz5l8INIiAmbpkQiO6U4Bt8lFz7RfDwWtIlFktib6N8h2wHXJ6mBtCFk3VCuKgYYqcPwOH%2FztV6YKYWobLemQA%2BT4bAV0h5vC3jT%2BtpxbMQJB99SKPMxtu0159YNToNcw%3D%3D',
+                  'https://firebasestorage.googleapis.com/v0/b/property-improver-4.appspot.com/o/house1%2Fimg_17.jpg?alt=media&token=4ac5e97b-2a8b-45c4-93a6-dcbd6175b73e']
 
 damage_detected = {}
 for image in images:

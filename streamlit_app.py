@@ -46,34 +46,41 @@ def on_image_click(image_name):
     # Obtain damage state from worst images
     damage_state = house_damage.evaluate_damage(multipredict_model, client_key, top_worst_images)
 
+    if damage_state == 0: st.sidebar.write("We haven't found relevant damages in the lowest scores images.")
+    else:
+        st.sidebar.write("We have found this relevant damages in the lowest scores images: ")
+        for value in damage_state:
+            st.sidebar.write("    - " + value)
+
+
 
 # Grid of images
 col1, col2 = st.columns(2)
 
 # Image 1
 with col1:
-    image1_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_18.jpg?alt=media&token=278d1efd-9e57-4035-8656-8ffbdb28ee4e"
+    image1_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-4.appspot.com/o/house1%2Fimg_1.jpg?alt=media&token=fa3f4d84-a2a9-42e0-83a2-9115b3d5e564"
     st.image(image1_url, use_column_width=True)
     if st.button("Property 1", use_container_width=True):
         on_image_click("Image 1")
 
 # Image 2
 with col2:
-    image2_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_10.jpg?alt=media&token=9f7ee55e-a6e2-4e58-b104-56a7e8da6de6"
+    image2_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-4.appspot.com/o/house1%2Fimg_10.jpg?alt=media&token=133093e1-8ffd-4770-b105-72865992ff89"
     st.image(image2_url, use_column_width=True)
     if st.button("Property 2", use_container_width=True):
         on_image_click("Image 2")
 
 # Image 3
 with col1:
-    image3_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_11.jpg?alt=media&token=d5dc1a73-b70e-4065-8db8-0c09b52ef8a0"
+    image3_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-4.appspot.com/o/house1%2Fimg_11.jpg?alt=media&token=eb261841-807c-4fb8-af78-50f92a2bc2aa"
     st.image(image3_url, use_column_width=True)
     if st.button("Property 3", use_container_width=True):
         on_image_click("Image 3")
 
 # Image 4
 with col2:
-    image4_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_12.jpg?alt=media&token=2dca730b-9ea2-4c5c-a3e0-83dec028e37a"
+    image4_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-4.appspot.com/o/house1%2Fimg_12.jpg?alt=media&token=e8ba2a63-f9b2-4bde-afe1-8ed4e067341e"
     st.image(image4_url, use_column_width=True)
     if st.button("Property 4", use_container_width=True):
         on_image_click("Image 4")
