@@ -1,5 +1,28 @@
 import streamlit as st
 
+# Custom styles
+custom_styles = """
+    <style>
+        body {
+            background-color: #1E1E1E; /* Dark background color */
+            color: #FFFFFF; /* White text color */
+        }
+        .stButton {
+            background-color: #000000 !important; /* Black button background color */
+            color: #000000 !important; /* Black text color for buttons */
+        }
+        .stMarkdown {
+            background-color: #FFFFFF; /* White background for header */
+            padding: 10px; /* Add padding to header */
+            border-radius: 8px; /* Add border radius to header */
+            margin-bottom: 20px; /* Add margin to separate header from content */
+        }
+    </style>
+"""
+
+# Apply custom styles
+st.markdown(custom_styles, unsafe_allow_html=True)
+
 # Main title and description
 st.title("My Streamlit App")
 st.write("This is a description for my application.")
@@ -8,25 +31,11 @@ st.write("This is a description for my application.")
 def on_image_click(image_name):
     st.write(f"You clicked on image {image_name}!")
 
+# Header
+st.markdown("<h1 style='text-align: center;'>My Custom Header</h1>", unsafe_allow_html=True)
+
 # Grid of images
 col1, col2 = st.columns(2)
-
-# Add custom styles
-st.markdown(
-    """
-    <style>
-        body {
-            background-color: #1E1E1E; /* Dark background color */
-            color: #FFFFFF; /* White text color */
-        }
-        .stButton {
-            background-color: #FFA500; /* Orange button color */
-            color: #1E1E1E; /* Dark text color for buttons */
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # Image 1
 with col1:
