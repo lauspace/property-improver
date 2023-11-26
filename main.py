@@ -15,7 +15,7 @@ if __name__ == '__main__':
     house_data_json = house_evaluation.evaluate_images_using_API(model_url, client_key, input_images, save=True)
     # type = exterior, interior, bathroom, kitchen
     # Given json extract worst type
-    worst_type = house_evaluation.obtain_min_room_score(house_data_json)
+    score_dict, worst_type = house_evaluation.obtain_min_room_score(house_data_json)
     # Given worst type extract images with this type
     worst_images = house_evaluation.obtain_worst_type_imgs(worst_type, house_data_json, input_images)
     # Evaluate each worst type image and obtain the three worst

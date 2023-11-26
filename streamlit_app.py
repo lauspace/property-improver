@@ -28,7 +28,7 @@ def on_image_click(image_name):
     score_dict, worst_type = house_evaluation.obtain_min_room_score(house_data_json)
 
     st.sidebar.write("Our software has scored your property's four room types as follows: ")
-    st.sidebar.write("    - " + score_dict[0].key + ": " + score_dict[0].value())
+    st.sidebar.write("    - " + score_dict[0].key() + ": " + score_dict[0].value())
     st.sidebar.write("Our software has scored your property's four room types as follows: ")
     st.sidebar.write("Our software has scored your property's four room types as follows: ")
     st.sidebar.write("Our software has scored your property's four room types as follows: ")
