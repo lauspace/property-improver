@@ -43,8 +43,6 @@ if __name__ == '__main__':
         for value in damage_state:
             print("    - " + value)
 
-    print(damage_state)
-
 
 
 
