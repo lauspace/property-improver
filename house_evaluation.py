@@ -34,7 +34,7 @@ def evaluate_images_using_API(model, cli_key, images, save=False):
 
     # The response is formatted in JSON
     json_data = response.json()
-
+    print(json_data)
     # Save JSON file
     if save:
         with open("data.json", "w") as file:
