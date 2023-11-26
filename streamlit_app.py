@@ -11,6 +11,7 @@ multipredict_model = 'https://api-us.restb.ai/vision/v2/multipredict'
 st.title("My Streamlit App")
 st.write("This is a description for my application.")
 
+
 # Function to be executed when an image is clicked
 def on_image_click(image_name):
     house_number = image_name.split("")[1]
@@ -20,7 +21,8 @@ def on_image_click(image_name):
     input_images = firebase_storage.obtain_images_path(firebase_blob, house_number)
 
     # Given images urls obtain json data (API use)
-    house_data_json = house_evaluation.evaluate_images_using_API(multianalyze_model, client_key, input_images, save=True)
+    house_data_json = house_evaluation.evaluate_images_using_API(multianalyze_model, client_key, input_images,
+                                                                 save=True)
     # type = exterior, interior, bathroom, kitchen
     # Given json extract worst type
     score_dict, worst_type = house_evaluation.obtain_min_room_score(house_data_json)
@@ -38,6 +40,7 @@ def on_image_click(image_name):
 
     # Obtain damage state from worst images
     damage_state = house_damage.evaluate_damage(multipredict_model, client_key, top_worst_images)
+
 
 # Grid of images
 col1, col2 = st.columns(2)
@@ -69,4 +72,3 @@ with col2:
     st.image(image4_url, use_column_width=True)
     if st.button("Property 4", use_container_width=True):
         on_image_click("Image 4")
-
