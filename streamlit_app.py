@@ -15,7 +15,7 @@ def on_image_click(image_name):
 col1, col2 = st.columns(2)
 
 # Imagen 1
-with col2:
+with col1:
     image1_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_18.jpg?alt=media&token=278d1efd-9e57-4035-8656-8ffbdb28ee4e"
     st.image(image1_url, use_column_width=True)
     if st.button("Property 1", use_container_width=True):
