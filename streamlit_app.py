@@ -32,7 +32,7 @@ def on_image_click(image_name):
     st.write(f"You clicked on image {image_name}!")
 
 # Header
-st.markdown("<h1 style='text-align: center;'>My Custom Header</h1>", unsafe_allow_html=True)
+st.markdown("<div class='custom-header'><h1>My Custom Header</h1></div>", unsafe_allow_html=True)
 
 # Grid of images
 col1, col2 = st.columns(2)
