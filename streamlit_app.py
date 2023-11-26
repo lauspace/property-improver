@@ -18,8 +18,9 @@ col1, col2 = st.columns(2)
 with col1:
     image1_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_18.jpg?alt=media&token=278d1efd-9e57-4035-8656-8ffbdb28ee4e"
     st.image(image1_url, use_column_width=True)
-    if st.button("Property 1"):
-        on_image_click("Imagen 1")
+    st.markdown(
+        """<div style="text-align:center;"><button style="text-align:center;" onclick="onButtonClick('Imagen 1')">Property 1</button></div>""",
+        unsafe_allow_html=True)
 
 # Imagen 2
 with col2:
