@@ -1,12 +1,20 @@
 import requests
 import json
+from itertools import islice
+
 
 def evaluate_worst_imgs(model, cli_key, images):
     images_eval = {}
     for image in images:
-        image_json = evaluate_images_using_API(model, cli_key, image)
-        # no puedo evaluar una imagen sola
+        image_json = evaluate_images_using_API(model, cli_key, [image])
+        images_eval[image] = image_json['response']['solutions']["r1r6"]["property"]["score"]
+    filtered_images_eval = {key: value for key, value in images_eval.items() if value is not None}
+    sort_aux = sorted(filtered_images_eval.items(), key=lambda x: x[1])
+    sorted_filtered_images_eval = dict(sort_aux)
 
+    num_elements_to_store = min(3, len(sorted_filtered_images_eval))
+    worst_images = list(islice(sorted_filtered_images_eval, num_elements_to_store))
+    return worst_images
 
 def evaluate_images_using_API(model, cli_key, images, save=False):
     payload = {
@@ -36,7 +44,7 @@ def evaluate_images_using_API(model, cli_key, images, save=False):
 def obtain_min_room_score(data):
     room_type_score = {}
     # Accessing scores from each room type
-    scores_path = data["response"]["solutions"]["c1c6"]["summary"]["score"]
+    scores_path = data["response"]["solutions"]["r1r6"]["summary"]["score"]
     room_type_score["bathroom"] = scores_path["bathroom"]
     room_type_score["exterior"] = scores_path["exterior"]
     room_type_score["interior"] = scores_path["interior"]
@@ -48,7 +56,7 @@ def obtain_min_room_score(data):
 
 def obtain_worst_type_imgs(type, json, images_list):
     images = []
-    image_selected = 1
+    image_selected = 0
     room_classification = {
         'AerialView': 'exterior',
         'Attic': 'interior',
