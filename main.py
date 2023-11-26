@@ -5,7 +5,7 @@ import house_damage
 if __name__ == '__main__':
     client_key = '79de00b7cd11c23d476c3a14567cb218edaf0c742f8b3946a993afaec1c33ea3'
     model_url = 'https://property.restb.ai/v1/multianalyze'
-    house_number = 1
+    house_number = 3
 
     firebase_blob = firebase_storage.obtain_firebase_blob()
     # given house selected obtain images urls

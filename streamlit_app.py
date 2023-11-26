@@ -8,8 +8,7 @@ multianalyze_model = 'https://property.restb.ai/v1/multianalyze'
 multipredict_model = 'https://api-us.restb.ai/vision/v2/multipredict'
 
 # Main title and description
-st.title("My Streamlit App")
-st.write("This is a description for my application.")
+st.title("Property Improver")
 
 
 # Function to be executed when an image is clicked
