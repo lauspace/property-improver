@@ -28,15 +28,20 @@ def on_image_click(image_name):
     score_dict, worst_type = house_evaluation.obtain_min_room_score(house_data_json)
 
     st.sidebar.write("Our software has scored your property's four room types as follows: ")
-    st.sidebar.write("    - " + score_dict[0].key() + ": " + score_dict[0].value())
-    st.sidebar.write("Our software has scored your property's four room types as follows: ")
-    st.sidebar.write("Our software has scored your property's four room types as follows: ")
-    st.sidebar.write("Our software has scored your property's four room types as follows: ")
+    for num in len(score_dict):
+        st.sidebar.write("    - " + str(list(score_dict.keys())[num]) + ": " + str(list(score_dict.keys())[num]))
+    st.sidebar.write("The worst room type is: " + worst_type)
 
     # Given worst type extract images with this type
     worst_images = house_evaluation.obtain_worst_type_imgs(worst_type, house_data_json, input_images)
     # Evaluate each worst type image and obtain the three worst
     top_worst_images = house_evaluation.evaluate_worst_imgs(multianalyze_model, client_key, worst_images)
+
+    st.sidebar.write("We have analyzed all the images of the " + worst_images + " type and the ones with the lowest"
+                                                                                " scores are the following:")
+    for image in top_worst_images:
+        image_url = image
+        st.sidebar.image(image_url, use_column_width=True)
 
     # Obtain damage state from worst images
     damage_state = house_damage.evaluate_damage(multipredict_model, client_key, top_worst_images)
