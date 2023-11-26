@@ -6,7 +6,16 @@ st.write("This is a description for my application.")
 
 # Function to be executed when an image is clicked
 def on_image_click(image_name):
-    st.write(f"You clicked on image {image_name}!")
+    # Store the clicked image name in the session state
+    st.session_state.clicked_image = image_name
+
+    # Redirect to a new page
+    st.experimental_rerun()
+
+# Check if we are on the new page
+if hasattr(st.session_state, 'clicked_image'):
+    # Display the clicked image name in a box
+    st.info(f"You clicked on image {st.session_state.clicked_image}!")
 
 # Grid of images
 col1, col2 = st.columns(2)
