@@ -3,7 +3,7 @@ from firebase_admin import storage
 
 def obtain_firebase_blob():
     # Key obtained in 'configuracion del proyecto -> cuentas de servicio'
-    service_account_key = 'C:\property-improver\property-improver-3-firebase-adminsdk-wussi-546eccd8af.json'
+    service_account_key = 'property-improver-3-firebase-adminsdk-wussi-546eccd8af.json'
     cred = firebase_admin.credentials.Certificate(service_account_key)
     default_app = firebase_admin.initialize_app(cred, {
         'storageBucket': 'property-improver-3.appspot.com'
