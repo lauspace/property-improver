@@ -1,4 +1,11 @@
 import streamlit as st
+import firebase_storage
+import house_evaluation
+import house_damage
+
+client_key = '79de00b7cd11c23d476c3a14567cb218edaf0c742f8b3946a993afaec1c33ea3'
+multianalyze_model = 'https://property.restb.ai/v1/multianalyze'
+multipredict_model = 'https://api-us.restb.ai/vision/v2/multipredict'
 
 # Main title and description
 st.title("My Streamlit App")
@@ -6,7 +13,31 @@ st.write("This is a description for my application.")
 
 # Function to be executed when an image is clicked
 def on_image_click(image_name):
-    st.sidebar.write("You choose: " + image_name)
+    house_number = image_name.split("")[1]
+
+    firebase_blob = firebase_storage.obtain_firebase_blob()
+    # given house selected obtain images urls
+    input_images = firebase_storage.obtain_images_path(firebase_blob, house_number)
+
+    # Given images urls obtain json data (API use)
+    house_data_json = house_evaluation.evaluate_images_using_API(multianalyze_model, client_key, input_images, save=True)
+    # type = exterior, interior, bathroom, kitchen
+    # Given json extract worst type
+    score_dict, worst_type = house_evaluation.obtain_min_room_score(house_data_json)
+
+    st.sidebar.write("Our software has scored your property's four room types as follows: ")
+    st.sidebar.write("    - " + score_dict[0].key + ": " + score_dict[0].value())
+    st.sidebar.write("Our software has scored your property's four room types as follows: ")
+    st.sidebar.write("Our software has scored your property's four room types as follows: ")
+    st.sidebar.write("Our software has scored your property's four room types as follows: ")
+
+    # Given worst type extract images with this type
+    worst_images = house_evaluation.obtain_worst_type_imgs(worst_type, house_data_json, input_images)
+    # Evaluate each worst type image and obtain the three worst
+    top_worst_images = house_evaluation.evaluate_worst_imgs(multianalyze_model, client_key, worst_images)
+
+    # Obtain damage state from worst images
+    damage_state = house_damage.evaluate_damage(multipredict_model, client_key, top_worst_images)
 
 # Grid of images
 col1, col2 = st.columns(2)

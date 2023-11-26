@@ -51,7 +51,7 @@ def obtain_min_room_score(data):
     room_type_score["kitchen"] = scores_path["kitchen"]
 
     filtered_dict = {key: value for key, value in room_type_score.items() if value is not None}
-    return min(filtered_dict, key=filtered_dict.get)
+    return room_type_score, min(filtered_dict, key=filtered_dict.get)
 
 
 def obtain_worst_type_imgs(type, json, images_list):
