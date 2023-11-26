@@ -6,9 +6,7 @@ from itertools import islice
 def evaluate_worst_imgs(model, cli_key, images):
     images_eval = {}
     for image in images:
-        print(image)
         image_json = evaluate_images_using_API(model, cli_key, [image])
-        print(image_json)
         images_eval[image] = image_json['response']['solutions']["r1r6"]["property"]["score"]
     filtered_images_eval = {key: value for key, value in images_eval.items() if value is not None}
     sort_aux = sorted(filtered_images_eval.items(), key=lambda x: x[1])
