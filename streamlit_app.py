@@ -14,7 +14,7 @@ st.write("This is a description for my application.")
 
 # Function to be executed when an image is clicked
 def on_image_click(image_name):
-    house_number = image_name.split("")[1]
+    house_number = image_name.split(" ")[1]
 
     firebase_blob = firebase_storage.obtain_firebase_blob()
     # given house selected obtain images urls
