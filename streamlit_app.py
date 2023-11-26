@@ -28,8 +28,8 @@ def on_image_click(image_name):
     score_dict, worst_type = house_evaluation.obtain_min_room_score(house_data_json)
 
     st.sidebar.write("Our software has scored your property's four room types as follows: ")
-    for num in score_dict:
-        st.sidebar.write("    - " + str(list(score_dict.keys())[num]) + ": " + str(list(score_dict.keys())[num]))
+    for item in score_dict:
+        st.sidebar.write("    - " + str(list(item.keys())) + ": " + str(list(item.values())))
     st.sidebar.write("The worst room type is: " + worst_type)
 
     # Given worst type extract images with this type
