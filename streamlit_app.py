@@ -8,7 +8,6 @@ st.write("This is a description for my application.")
 def on_image_click(image_name):
     st.sidebar.write("You choose: " + image_name)
 
-
 # Grid of images
 col1, col2 = st.columns(2)
 
