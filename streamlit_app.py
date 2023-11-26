@@ -37,7 +37,7 @@ def on_image_click(image_name):
     # Evaluate each worst type image and obtain the three worst
     top_worst_images = house_evaluation.evaluate_worst_imgs(multianalyze_model, client_key, worst_images)
 
-    st.sidebar.write("We have analyzed all the images of the " + worst_images + " type and the ones with the lowest"
+    st.sidebar.write("We have analyzed all the images of the " + worst_type + " type and the ones with the lowest"
                                                                                 " scores are the following:")
     for image in top_worst_images:
         image_url = image
