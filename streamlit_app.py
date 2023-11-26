@@ -9,11 +9,8 @@ def on_image_click(image_name):
     # Store the clicked image name in the session state
     st.session_state.clicked_image = image_name
 
-    # Redirect to a new page
-    st.experimental_rerun()
-
 # Check if we are on the new page
-if hasattr(st.session_state, 'clicked_image'):
+if 'clicked_image' in st.session_state:
     # Display the clicked image name in a box
     st.info(f"You clicked on image {st.session_state.clicked_image}!")
 
@@ -48,3 +45,4 @@ else:
         if st.button("Property 4", use_container_width=True):
             on_image_click("Image 4")
         st.image(image4_url, use_column_width=True)
+
