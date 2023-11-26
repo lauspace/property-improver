@@ -25,7 +25,7 @@ with col1:
 with col2:
     image2_url = "https://firebasestorage.googleapis.com/v0/b/property-improver-3.appspot.com/o/house3%2Fimg_10.jpg?alt=media&token=9f7ee55e-a6e2-4e58-b104-56a7e8da6de6"
     st.image(image2_url, caption="Imagen 2", use_column_width=True)
-    if st.button("Pulsa para ejecutar2"):
+    if st.button("Pulsa para ejecutar"):
         on_image_click("Imagen 2")
 
 # Imagen 3
