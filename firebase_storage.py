@@ -21,5 +21,5 @@ def obtain_images_path(f_blob, house_num, imgs=[]):
         if (house_name_img in blob.name):
             img_name = blob.name.split('/')[1].split('.')[0]
             imgs.append('https://firebasestorage.googleapis.com/v0/b/property-improver-4.appspot.com/o/house'
-                        + str(house_num) + '%2F' + str(img_name) + '.jpeg?alt=media&token=43d8fb7f-7d90-4f9f-b164-47cdc27208bf')
+                        + str(house_num) + '%2F' + str(img_name) + '.jpg?alt=media&token=ab74b08b-8d7b-4eb3-bf6e-28bd658f7190')
     return imgs

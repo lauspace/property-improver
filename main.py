@@ -1,7 +1,6 @@
 import firebase_storage
 import house_evaluation
 import house_damage
-from PIL import Image
 
 if __name__ == '__main__':
     client_key = '79de00b7cd11c23d476c3a14567cb218edaf0c742f8b3946a993afaec1c33ea3'

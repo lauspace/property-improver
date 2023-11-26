@@ -10,7 +10,7 @@ def evaluate_damage(model, cli_key, images):
         labels = []
         if len(dets) != 0:
             for det in dets:
-                labels.append(det.label)
+                labels.append(det[labels])
             damage_detected[image] = labels
         else: damage_detected[image] = 0
 
